@@ -45,6 +45,21 @@ public class NoteSpec {
     }
 
     @Test
+    public void whenSameObjectThenEquals() throws Exception {
+        assertThat(note1, is(note1));
+    }
+
+    @Test
+    public void whenDifferentObjectThenNotEquals() throws Exception {
+        assertThat(note1, not(10));
+    }
+
+    @Test
+    public void whenNullThenNotEquals() throws Exception {
+        assertThat("Note not equals null", !note1.equals(null));
+    }
+
+    @Test
     public void whenNotesWithSameTitleAndContentAreComparedThenTheyAreEquals() throws Exception {
         assertThat("Note1 equals note2", note1.equals(note2));
         assertThat("Note2 equals note1", note2.equals(note1));
