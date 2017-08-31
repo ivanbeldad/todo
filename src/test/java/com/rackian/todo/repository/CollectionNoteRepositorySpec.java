@@ -12,7 +12,7 @@ import java.util.List;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
-public class ListNoteRepositorySpec {
+public class CollectionNoteRepositorySpec {
 
     private List<Note> notes;
     private NoteRepository repository;
@@ -79,6 +79,7 @@ public class ListNoteRepositorySpec {
     @Test
     public void whenNoteIsDeletedThenItIsRemoved() throws Exception {
         notes.add(note);
+        notes.add(noteDifferent);
         repository.delete(note);
         assertThat(repository.findAll(), not(hasItem(note)));
     }
