@@ -11,7 +11,7 @@ script:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   # Generate Jacoco report
-  - mvn clean org.jacoco:prepare-agent install org.jacoco:report
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install org.jacoco:jacoco-maven-plugin:report
   # Upload to codacy
   - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
 
