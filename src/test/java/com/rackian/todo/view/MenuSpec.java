@@ -1,7 +1,6 @@
 package com.rackian.todo.view;
 
 import com.rackian.todo.service.NoteService;
-import com.rackian.todo.service.NoteServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -28,12 +27,6 @@ public class MenuSpec {
         outputStream = new ByteArrayOutputStream();
         printStream = new PrintStream(outputStream);
         menu = new Menu(printStream, noteService);
-    }
-
-    @Test
-    public void whenCreatedThenParametersAreCorrectlyInitialized() throws Exception {
-        assertThat(menu.getNoteService(), is(noteService));
-        assertThat(menu.getPrintStream(), is(printStream));
     }
 
     @Test

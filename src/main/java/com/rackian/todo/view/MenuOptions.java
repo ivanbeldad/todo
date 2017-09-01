@@ -16,7 +16,7 @@ public enum MenuOptions {
 
     @Override
     public String toString() {
-        return "" + number + ". " + text;
+        return Integer.toString(number) + ". " + text;
     }
 
     public String getText() {

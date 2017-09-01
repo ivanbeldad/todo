@@ -15,16 +15,10 @@ public class Menu {
     }
 
     public void showOptions() {
+        printStream.println("Choose one of the following options:");
         printStream.println(MenuOptions.LIST_NOTES);
         printStream.println(MenuOptions.CREATE_NOTE);
         printStream.println(MenuOptions.DELETE_NOTE);
     }
 
-    public PrintStream getPrintStream() {
-        return printStream;
-    }
-
-    public NoteService getNoteService() {
-        return noteService;
-    }
 }
