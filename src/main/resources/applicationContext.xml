@@ -14,6 +14,8 @@
         </constructor-arg>
     </bean>
 
-    <bean name="noteService" class="com.rackian.todo.service.NoteServiceImpl"/>
+    <bean name="noteService" class="com.rackian.todo.service.NoteServiceImpl">
+        <constructor-arg index="0" ref="noteRepository"/>
+    </bean>
 
 </beans>
