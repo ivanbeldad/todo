@@ -18,4 +18,15 @@
         <constructor-arg index="0" ref="noteRepository"/>
     </bean>
 
+
+    <bean name="menu" class="com.rackian.todo.view.Menu">
+        <constructor-arg index="0" value="#{T(java.lang.System).out}"/>
+        <constructor-arg index="1" value="#{T(java.lang.System).in}"/>
+        <constructor-arg index="2" ref="noteService"/>
+    </bean>
+
+    <bean name="application" class="com.rackian.todo.Application">
+        <constructor-arg ref="menu"/>
+    </bean>
+
 </beans>
