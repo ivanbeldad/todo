@@ -77,4 +77,14 @@ public class NoteSpec {
         assertThat(note1.hashCode(), not(note2.hashCode()));
     }
 
+    @Test
+    public void whenToStringThenShowTitle() throws Exception {
+        assertThat(note1.toString(), containsString(note1.getTitle()));
+    }
+
+    @Test
+    public void whenToStringThenShowContent() throws Exception {
+        assertThat(note1.toString(), containsString(note1.getContent()));
+    }
+
 }

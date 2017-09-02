@@ -47,4 +47,10 @@ public class Note {
         return Objects.hash(title, content);
     }
 
+    @Override
+    public String toString() {
+        return  "Title: " + title + "\n" +
+                "Content: " + content;
+    }
+
 }
