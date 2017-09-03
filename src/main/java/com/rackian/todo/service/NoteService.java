@@ -4,11 +4,11 @@ import com.rackian.todo.exception.NoteAlreadyExistsException;
 import com.rackian.todo.exception.NoteDoesntExistsException;
 import com.rackian.todo.model.Note;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface NoteService {
 
-    Collection<Note> notes();
+    List<Note> notes();
 
     Note create(Note note) throws NoteAlreadyExistsException;
 

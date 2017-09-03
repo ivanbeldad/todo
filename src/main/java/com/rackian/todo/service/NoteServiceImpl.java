@@ -6,7 +6,7 @@ import com.rackian.todo.model.Note;
 import com.rackian.todo.repository.NoteRepository;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public class NoteServiceImpl implements NoteService {
 
@@ -17,8 +17,8 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public Collection<Note> notes() {
-        Collection<Note> notes = new ArrayList<>();
+    public List<Note> notes() {
+        List<Note> notes = new ArrayList<>();
         repository.findAll().forEach(notes::add);
         return notes;
     }
