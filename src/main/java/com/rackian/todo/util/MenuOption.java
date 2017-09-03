@@ -9,13 +9,6 @@ public enum MenuOption {
     DELETE_NOTE(3, "Delete an existing note."),
     EXIT(4, "Exit.");
 
-    public static MenuOption getByNumber(int number) throws MenuOptionDoesntExistsException {
-        for (MenuOption option : MenuOption.values()) {
-            if (option.number == number) return option;
-        }
-        throw new MenuOptionDoesntExistsException();
-    }
-
     private String text;
     private int number;
 
@@ -35,6 +28,13 @@ public enum MenuOption {
 
     public int getNumber() {
         return number;
+    }
+
+    public static MenuOption getByNumber(int number) throws MenuOptionDoesntExistsException {
+        for (MenuOption option : MenuOption.values()) {
+            if (option.number == number) return option;
+        }
+        throw new MenuOptionDoesntExistsException();
     }
 
 }
