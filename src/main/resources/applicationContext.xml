@@ -18,15 +18,22 @@
         <constructor-arg index="0" ref="noteRepository"/>
     </bean>
 
-
-    <bean name="menu" class="com.rackian.todo.view.Menu">
+    <bean name="menuView" class="com.rackian.todo.view.MenuView">
         <constructor-arg index="0" value="#{T(java.lang.System).out}"/>
         <constructor-arg index="1" value="#{T(java.lang.System).in}"/>
-        <constructor-arg index="2" ref="noteService"/>
     </bean>
 
-    <bean name="application" class="com.rackian.todo.Application">
-        <constructor-arg ref="menu"/>
+    <bean name="menuCommands" class="com.rackian.todo.command.MenuCommands">
+        <constructor-arg index="0">
+            <util:map map-class="java.util.HashMap"/>
+        </constructor-arg>
+        <constructor-arg index="1" ref="noteService"/>
+        <constructor-arg index="2" ref="menuView"/>
+    </bean>
+
+    <bean name="menuController" class="com.rackian.todo.controller.MenuController">
+        <constructor-arg index="0" ref="menuView"/>
+        <constructor-arg index="1" ref="menuCommands"/>
     </bean>
 
 </beans>
