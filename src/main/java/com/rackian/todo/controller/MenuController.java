@@ -1,5 +1,6 @@
 package com.rackian.todo.controller;
 
+import com.rackian.todo.exception.ExitException;
 import com.rackian.todo.exception.MenuOptionDoesntExistsException;
 import com.rackian.todo.command.Commands;
 import com.rackian.todo.util.MenuOption;
@@ -25,7 +26,7 @@ public class MenuController {
         } catch (MenuOptionDoesntExistsException|NumberFormatException|NullPointerException e) {
             init();
         } catch (RuntimeException e) {
-            menuView.show(Collections.singletonList("End"));
+            menuView.show(Collections.singletonList("Finished"));
         }
     }
 

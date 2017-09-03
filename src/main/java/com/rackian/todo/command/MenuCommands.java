@@ -27,7 +27,7 @@ public class MenuCommands implements Commands<MenuOption> {
     }
 
     @Override
-    public void execute(MenuOption key) throws RuntimeException {
+    public void execute(MenuOption key) {
         commands.get(key).execute();
     }
 

@@ -1,5 +1,6 @@
 package com.rackian.todo.command;
 
+import com.rackian.todo.exception.ExitException;
 import com.rackian.todo.view.MenuView;
 
 import java.util.Collections;
@@ -13,9 +14,9 @@ public class ExitCommand implements Command {
     }
 
     @Override
-    public void execute() throws RuntimeException {
+    public void execute() {
         view.show(Collections.singletonList("Exiting application..."));
-        throw new RuntimeException("");
+        throw new ExitException();
     }
 
 }
