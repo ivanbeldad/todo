@@ -7,7 +7,9 @@ import com.rackian.todo.util.MenuOption;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class MenuView {
 
@@ -19,7 +21,7 @@ public class MenuView {
         this.scanner = new Scanner(inputStream);
     }
 
-    public MenuOption showMainMenu() throws MenuOptionDoesntExistsException, NumberFormatException {
+    public MenuOption showMainMenu() throws MenuOptionDoesntExistsException {
         printStream.println(MenuInfo.CHOOSE_OPTION);
         for (MenuOption option : MenuOption.values()) {
             printStream.println(option.toString());
@@ -58,7 +60,7 @@ public class MenuView {
         return answers;
     }
 
-    public int askNumber(String question) throws NumberFormatException {
+    public int askNumber(String question) {
         printStream.println(question);
         try {
             return Integer.parseInt(scanner.nextLine());

@@ -1,8 +1,7 @@
 package com.rackian.todo.controller;
 
-import com.rackian.todo.exception.ExitException;
-import com.rackian.todo.exception.MenuOptionDoesntExistsException;
 import com.rackian.todo.command.Commands;
+import com.rackian.todo.exception.MenuOptionDoesntExistsException;
 import com.rackian.todo.util.MenuOption;
 import com.rackian.todo.view.MenuView;
 

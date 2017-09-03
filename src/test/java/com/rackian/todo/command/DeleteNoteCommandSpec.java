@@ -1,7 +1,5 @@
 package com.rackian.todo.command;
 
-import com.rackian.todo.controller.MenuController;
-import com.rackian.todo.exception.NoteAlreadyExistsException;
 import com.rackian.todo.model.Note;
 import com.rackian.todo.service.NoteService;
 import com.rackian.todo.util.MenuError;
