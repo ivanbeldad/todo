@@ -8,32 +8,46 @@
         http://www.springframework.org/schema/util
         http://www.springframework.org/schema/util/spring-util.xsd">
 
+    <bean name="jsonFile" class="java.io.File">
+        <constructor-arg value="data.json"/>
+    </bean>
+
+    <bean name="objectMapper" class="com.rackian.todo.util.PrettyObjectMapper"/>
+
+    <bean name="typeReferenceListNote" class="com.rackian.todo.util.TypeReferenceListNote"/>
+
+    <bean name="jsonNoteRepository" class="com.rackian.todo.repository.JsonNoteRepository">
+        <constructor-arg ref="jsonFile"/>
+        <constructor-arg ref="objectMapper"/>
+        <constructor-arg ref="typeReferenceListNote"/>
+    </bean>
+
     <bean name="noteRepository" class="com.rackian.todo.repository.CollectionNoteRepository">
-        <constructor-arg index="0">
+        <constructor-arg>
             <util:list list-class="java.util.ArrayList" value-type="com.rackian.todo.model.Note"/>
         </constructor-arg>
     </bean>
 
     <bean name="noteService" class="com.rackian.todo.service.NoteServiceImpl">
-        <constructor-arg index="0" ref="noteRepository"/>
+        <constructor-arg index="0" ref="jsonNoteRepository"/>
     </bean>
 
     <bean name="menuView" class="com.rackian.todo.view.MenuView">
-        <constructor-arg index="0" value="#{T(java.lang.System).out}"/>
-        <constructor-arg index="1" value="#{T(java.lang.System).in}"/>
+        <constructor-arg value="#{T(java.lang.System).out}"/>
+        <constructor-arg value="#{T(java.lang.System).in}"/>
     </bean>
 
     <bean name="menuCommands" class="com.rackian.todo.command.MenuCommands">
-        <constructor-arg index="0">
+        <constructor-arg>
             <util:map map-class="java.util.HashMap"/>
         </constructor-arg>
-        <constructor-arg index="1" ref="noteService"/>
-        <constructor-arg index="2" ref="menuView"/>
+        <constructor-arg ref="noteService"/>
+        <constructor-arg ref="menuView"/>
     </bean>
 
     <bean name="menuController" class="com.rackian.todo.controller.MenuController">
-        <constructor-arg index="0" ref="menuView"/>
-        <constructor-arg index="1" ref="menuCommands"/>
+        <constructor-arg ref="menuView"/>
+        <constructor-arg ref="menuCommands"/>
     </bean>
 
 </beans>
