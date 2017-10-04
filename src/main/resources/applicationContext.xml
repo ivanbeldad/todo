@@ -2,11 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util
-        http://www.springframework.org/schema/util/spring-util.xsd">
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <bean name="jsonFile" class="java.io.File">
         <constructor-arg value="data.json"/>
@@ -22,14 +24,16 @@
         <constructor-arg ref="typeReferenceListNote"/>
     </bean>
 
-    <bean name="noteRepository" class="com.rackian.todo.repository.CollectionNoteRepository">
+    <bean name="collectionNoteRepository" class="com.rackian.todo.repository.CollectionNoteRepository">
         <constructor-arg>
             <util:list list-class="java.util.ArrayList" value-type="com.rackian.todo.model.Note"/>
         </constructor-arg>
     </bean>
 
+    <bean name="noteRepository" class="com.rackian.todo.repository.MysqlNoteRepository"/>
+
     <bean name="noteService" class="com.rackian.todo.service.NoteServiceImpl">
-        <constructor-arg index="0" ref="jsonNoteRepository"/>
+        <constructor-arg index="0" ref="noteRepository"/>
     </bean>
 
     <bean name="menuView" class="com.rackian.todo.view.MenuView">
@@ -49,5 +53,9 @@
         <constructor-arg ref="menuView"/>
         <constructor-arg ref="menuCommands"/>
     </bean>
+
+    <context:annotation-config/>
+
+    <context:property-placeholder location="classpath:application.properties"/>
 
 </beans>

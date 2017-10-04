@@ -1,7 +1,5 @@
 [ {
-  "title" : "First note",
-  "content" : "Content of the first note"
-}, {
-  "title" : "Another note",
-  "content" : "Content of another note"
+  "id" : null,
+  "title" : "My title",
+  "content" : "My content persisted with hibernate"
 } ]

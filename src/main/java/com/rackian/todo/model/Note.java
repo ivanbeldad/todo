@@ -1,10 +1,21 @@
 package com.rackian.todo.model;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Note {
+@Entity
+@Table(name = "notes")
+public class Note implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+
+    @Column(name = "title", nullable = false)
     private String title;
+
+    @Column(name = "content")
     private String content;
 
     public Note() {
@@ -17,16 +28,20 @@ public class Note {
         this.content = content;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getContent() {
         return content;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setContent(String content) {
